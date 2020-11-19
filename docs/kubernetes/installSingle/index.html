@@ -3,41 +3,466 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Docusaurus v2.0.0-alpha.66">
-<title data-react-helmet="true">安装Kubernetes单Master节点 | 笔乐小记</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docusaurus_language" content="en"><meta data-react-helmet="true" name="docusaurus_version" content="current"><meta data-react-helmet="true" name="docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="安装Kubernetes单Master节点 | 笔乐小记"><meta data-react-helmet="true" name="description" content="配置要求"><meta data-react-helmet="true" property="og:description" content="配置要求"><meta data-react-helmet="true" property="og:url" content="https://saakyous.github.io/docs/kubernetes/installSingle"><link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.ico"><link data-react-helmet="true" rel="canonical" href="https://saakyous.github.io/docs/kubernetes/installSingle"><link rel="stylesheet" href="/styles.4e4698aa.css">
-<link rel="preload" href="/styles.6aa03fa5.js" as="script">
-<link rel="preload" href="/runtime~main.d5992e9b.js" as="script">
-<link rel="preload" href="/main.43d3db25.js" as="script">
-<link rel="preload" href="/1.b1b5cc88.js" as="script">
-<link rel="preload" href="/2.94e1053a.js" as="script">
-<link rel="preload" href="/35.803afefc.js" as="script">
-<link rel="preload" href="/36.f28cd485.js" as="script">
-<link rel="preload" href="/935f2afb.83748b62.js" as="script">
-<link rel="preload" href="/17896441.d7b5390d.js" as="script">
-<link rel="preload" href="/ef58646b.9686dc5b.js" as="script">
+<meta name="generator" content="Docusaurus v2.0.0-alpha.68">
+<title data-react-helmet="true">安装Kubernetes单Master节点 | 笔乐小记</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docusaurus_language" content="en"><meta data-react-helmet="true" name="docusaurus_version" content="current"><meta data-react-helmet="true" name="docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="安装Kubernetes单Master节点 | 笔乐小记"><meta data-react-helmet="true" name="description" content="配置要求"><meta data-react-helmet="true" property="og:description" content="配置要求"><meta data-react-helmet="true" property="og:url" content="https://saakyous.github.io/docs/kubernetes/installSingle"><link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.ico"><link data-react-helmet="true" rel="canonical" href="https://saakyous.github.io/docs/kubernetes/installSingle"><link rel="stylesheet" href="/styles.dabfadb2.css">
+<link rel="preload" href="/styles.ceab8306.js" as="script">
+<link rel="preload" href="/runtime~main.9e0a2fdc.js" as="script">
+<link rel="preload" href="/main.f17300c2.js" as="script">
+<link rel="preload" href="/1.68b3ccd5.js" as="script">
+<link rel="preload" href="/34.a9643da0.js" as="script">
+<link rel="preload" href="/35.6cbe4da2.js" as="script">
+<link rel="preload" href="/935f2afb.c8ae1ee1.js" as="script">
+<link rel="preload" href="/33.bc4d3d55.js" as="script">
+<link rel="preload" href="/ef58646b.a4d85799.js" as="script">
 </head>
 <body>
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
-<nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a class="navbar__brand" href="/"><img class="navbar__logo" src="/img/logo.svg" alt="My Site Logo"><strong class="navbar__title">笔乐小记</strong></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/kubernetes/installSingle">Kubernetes</a><a class="navbar__item navbar__link" href="/docs/linux/OSInstall">Linux</a></div><div class="navbar__items navbar__items--right"><div class="react-toggle react-toggle--disabled displayOnlyInLargeViewport_2aTZ"><div class="react-toggle-track"><div class="react-toggle-track-check"><span class="toggle_BsTx">🌜</span></div><div class="react-toggle-track-x"><span class="toggle_BsTx">🌞</span></div></div><div class="react-toggle-thumb"></div><input type="checkbox" disabled="" aria-label="Dark mode toggle" class="react-toggle-screenreader-only"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a class="navbar__brand" href="/"><img class="navbar__logo" src="/img/logo.svg" alt="My Site Logo"><strong class="navbar__title">笔乐小记</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a aria-current="page" class="menu__link navbar__link--active" href="/docs/kubernetes/installSingle">Kubernetes</a></li><li class="menu__list-item"><a class="menu__link" href="/docs/linux/OSInstall">Linux</a></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_2gpo"><div class="docSidebarContainer_3_JD" role="complementary"><div class="sidebar_2urC"><div class="menu menu--responsive menu_5FrY"><button aria-label="Open Menu" aria-haspopup="true" class="button button--secondary button--sm menu__button" type="button"><svg aria-label="Menu" class="sidebarMenuIcon_Dm3K" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 32 32" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><ul class="menu__list"><li class="menu__list-item"><a class="menu__link menuLinkText_2zSB">安装Kuberbetes</a><ul class="menu__list"><li class="menu__list-item"><a aria-current="page" class="menu__link menu__link--active active" tabindex="0" href="/docs/kubernetes/installSingle">安装Kubernetes单Master节点</a></li></ul></li></ul></div></div></div><main class="docMainContainer_3EyW"><div class="container padding-vert--lg docItemWrapper_1EkI"><div class="row"><div class="col docItemCol_2ASc"><div class="docItemContainer_3QWW"><article><header><h1 class="docTitle_1Lrw">安装Kubernetes单Master节点</h1></header><div class="markdown"><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="配置要求"></a>配置要求<a aria-hidden="true" tabindex="-1" class="hash-link" href="#配置要求" title="Direct link to heading">#</a></h2><ul><li>至少2台 <strong>2核4G</strong> 的服务器</li><li><strong>CentOS 7.6/7.7/7.8</strong></li></ul><p><strong>安装后的软件版本为</strong></p><ul><li>Kubernetes v1.19.x<ul><li>calico 3.13.1</li><li>ginx-ingress 1.5.5</li></ul></li><li>Docker 19.03</li></ul><p>安装后的拓扑图如下：
-<img src="https://gitee.com/saakyous/gopic/raw/master/img/2020/11/20201114112629.png"></p><div class="admonition admonition-tip alert alert--success"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>关于二进制安装</h5></div><div class="admonition-content"><p>kubeadm 是 Kubernetes 官方支持的安装方式，“二进制” 不是。本文档采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。</p></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="检查-centos--hostname"></a>检查 centos / hostname<a aria-hidden="true" tabindex="-1" class="hash-link" href="#检查-centos--hostname" title="Direct link to heading">#</a></h2><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-sh codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token plain"># 在 master 节点和 worker 节点都要执行</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">cat /etc/redhat-release</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"># 此处 hostname 的输出将会是该机器在 Kubernetes 集群中的节点名字</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"># 不能使用 localhost 作为节点的名字</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">hostname</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"># 请使用 lscpu 命令，核对 CPU 信息</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"># Architecture: x86_64    本安装文档不支持 arm 架构</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"># CPU(s):       2         CPU 内核数量不能低于 2</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">lscpu</span></div></div></div></div></div><div class="admonition admonition-note alert alert--secondary"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>修改 hostname</h5></div><div class="admonition-content"><p>如果您需要修改 hostname，可执行如下指令：</p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-sh codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token plain"># 修改 hostname</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">hostnamectl set-hostname your-new-host-name</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"># 查看修改结果</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">hostnamectl status</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"># 设置 hostname 解析</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">echo &quot;127.0.0.1   $(hostname)&quot; &gt;&gt; /etc/hosts</span></div></div></div></div></div></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="检查网络"></a>检查网络<a aria-hidden="true" tabindex="-1" class="hash-link" href="#检查网络" title="Direct link to heading">#</a></h2><p>在所有节点执行命令</p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-undefined codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token plain">[root@demo-master-a-1 ~]$ ip route show</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">default via 172.21.0.1 dev eth0 </span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">169.254.0.0/16 dev eth0 scope link metric 1002 </span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 </span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">[root@demo-master-a-1 ~]$ ip address</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">    inet 127.0.0.1/8 scope host lo</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">       valid_lft forever preferred_lft forever</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">    link/ether 00:16:3e:12:a4:1b brd ff:ff:ff:ff:ff:ff</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">    inet 172.17.216.80/20 brd 172.17.223.255 scope global dynamic eth0</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">       valid_lft 305741654sec preferred_lft 305741654sec</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div></div></div></div></div><div class="admonition admonition-note alert alert--secondary"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>kubelet使用的IP地址</h5></div><div class="admonition-content"><ul><li><em>ip route show</em> 命令中，可以知道机器的默认网卡，通常是 <em>eth0</em>，如 <em>default via 172.21.0.23 dev eth0</em></li><li><em>ip address</em> 命令中，可显示默认网卡的 IP 地址，Kubernetes 将使用此 IP 地址与集群内的其他节点通信，如 <em>172.17.216.80</em></li><li>所有节点上 Kubernetes 所使用的 IP 地址必须可以互通（无需 NAT 映射、无安全组或防火墙隔离）</li></ul></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="安装docker及kubelet"></a>安装docker及kubelet<a aria-hidden="true" tabindex="-1" class="hash-link" href="#安装docker及kubelet" title="Direct link to heading">#</a></h2><div class="admonition admonition-danger alert alert--danger"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>请认真核对如下7个选项</h5></div><div class="admonition-content"><ul><li>我的任意节点 centos 版本为 7.6 / 7.7 或 7.8</li><li>我的任意节点 CPU 内核数量大于等于 2，且内存大于等于 4G</li><li>我的任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</li><li>我的任意节点都有固定的内网 IP 地址</li><li>我的任意节点都只有一个网卡，如果有特殊目的，我可以在完成 K8S 安装后再增加新的网卡</li><li>我的任意节点上 Kubelet使用的 IP 地址 可互通（无需 NAT 映射即可相互访问），且没有防火墙、安全组隔离</li><li>我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</li></ul></div></div><p>使用root身份在所有节点执行乳如下代码，以安装软件：</p><ul><li>docker</li><li>nfs-utils</li><li>kubectl/kubeadm/kubelet</li></ul><div><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_1w39 tabs__item--active" style="outline:none">快速安装</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39" style="outline:none">手动安装</li></ul><div role="tabpanel" class="margin-vert--md"><div><p><strong>请将脚本最后的 1.19.3 替换成您需要的版本号， 脚本中间的 v1.19.x 不要替换</strong></p><blockquote><p>docker hub 镜像请根据自己网络的情况任选一个</p><ul><li>第四行为腾讯云 docker hub 镜像</li><li>第六行为DaoCloud docker hub 镜像</li><li>第八行为华为云 docker hub 镜像</li><li>第十行为阿里云 docker hub 镜像</li></ul></blockquote><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 在 master 节点和 worker 节点都要执行</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 最后一个参数 1.19.3 用于指定 kubenetes 版本，支持所有 1.19.x 版本的安装</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 腾讯云 docker hub 镜像</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># export REGISTRY_MIRROR=&quot;https://mirror.ccs.tencentyun.com&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># DaoCloud 镜像</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># export REGISTRY_MIRROR=&quot;http://f1361db2.m.daocloud.io&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 华为云镜像</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># export REGISTRY_MIRROR=&quot;https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 阿里云 docker hub 镜像</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:rgb(191, 199, 213)">REGISTRY_MIRROR</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain">https://registry.cn-hangzhou.aliyuncs.com</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token function" style="color:rgb(130, 170, 255)">curl</span><span class="token plain"> -sSL https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/install_kubelet.sh </span><span class="token operator" style="color:rgb(137, 221, 255)">|</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">sh</span><span class="token plain"> -s </span><span class="token number" style="color:rgb(247, 140, 108)">1.19</span><span class="token plain">.3</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div></div></div></div></div></div></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="初始化master节点"></a>初始化master节点<a aria-hidden="true" tabindex="-1" class="hash-link" href="#初始化master节点" title="Direct link to heading">#</a></h2><div class="admonition admonition-danger alert alert--danger"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>关于初始化时用到的环境变量</h5></div><div class="admonition-content"><ul><li><strong>APISERVER_NAME</strong> 不能是 master 的 hostname</li><li><strong>APISERVER_NAME</strong> 必须全为小写字母、数字、小数点，不能包含减号</li><li><strong>POD_SUBNET</strong> 所使用的网段不能与 <strong>master节点/worker节点</strong> 所在的网段重叠。该字段的取值为一个 CIDR 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改</li></ul></div></div><div><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_1w39 tabs__item--active" style="outline:none">快速初始化</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39" style="outline:none">手动初始化</li></ul><div role="tabpanel" class="margin-vert--md"><div>请将脚本最后的 1.19.3 替换成您需要的版本号， __脚本中间的 v1.19.x 不要替换__<div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 只在 master 节点执行</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:rgb(191, 199, 213)">MASTER_IP</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain">x.x.x.x</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 替换 apiserver.demo 为 您想要的 dnsName</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:rgb(191, 199, 213)">APISERVER_NAME</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain">apiserver.demo</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:rgb(191, 199, 213)">POD_SUBNET</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token number" style="color:rgb(247, 140, 108)">10.100</span><span class="token plain">.0.1/16</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">echo</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;</span><span class="token string variable" style="color:rgb(191, 199, 213)">${MASTER_IP}</span><span class="token string" style="color:rgb(195, 232, 141)">    </span><span class="token string variable" style="color:rgb(191, 199, 213)">${APISERVER_NAME}</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;&gt;</span><span class="token plain"> /etc/hosts</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token function" style="color:rgb(130, 170, 255)">curl</span><span class="token plain"> -sSL https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/init_master.sh </span><span class="token operator" style="color:rgb(137, 221, 255)">|</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">sh</span><span class="token plain"> -s </span><span class="token number" style="color:rgb(247, 140, 108)">1.19</span><span class="token plain">.3</span></div></div></div></div></div></div></div></div><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="检查master初始化结果"></a>检查master初始化结果<a aria-hidden="true" tabindex="-1" class="hash-link" href="#检查master初始化结果" title="Direct link to heading">#</a></h3><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 只在 master 节点执行</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token function" style="color:rgb(130, 170, 255)">watch</span><span class="token plain"> kubectl get pod -n kube-system -o wide</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 查看 master 节点初始化结果</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">kubectl get nodes -o wide</span></div></div></div></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="初始化work节点"></a>初始化work节点<a aria-hidden="true" tabindex="-1" class="hash-link" href="#初始化work节点" title="Direct link to heading">#</a></h2><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="获得join命令参数"></a>获得join命令参数<a aria-hidden="true" tabindex="-1" class="hash-link" href="#获得join命令参数" title="Direct link to heading">#</a></h3><p><strong>在master节点上执行</strong></p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 只在 master 节点执行</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">kubeadm token create --print-join-command</span></div></div></div></div></div><p>可获取kubeadm join 命令及参数，如下所示</p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># kubeadm token create 命令的输出</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">kubeadm </span><span class="token function" style="color:rgb(130, 170, 255)">join</span><span class="token plain"> apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303</span></div></div></div></div></div><div class="admonition admonition-tip alert alert--success"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>有效时间</h5></div><div class="admonition-content"><p>该 token 的有效时间为 2 个小时，2小时内，您可以使用此 token 初始化任意数量的 worker 节点。</p></div></div><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="初始化work"></a>初始化work<a aria-hidden="true" tabindex="-1" class="hash-link" href="#初始化work" title="Direct link to heading">#</a></h3><p><strong>针对所有的 worker 节点执行</strong></p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 只在 worker 节点执行</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 替换 x.x.x.x 为 master 节点的内网 IP</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:rgb(191, 199, 213)">MASTER_IP</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain">x.x.x.x</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:rgb(191, 199, 213)">APISERVER_NAME</span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain">apiserver.demo</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token builtin class-name" style="color:rgb(255, 203, 107)">echo</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;</span><span class="token string variable" style="color:rgb(191, 199, 213)">${MASTER_IP}</span><span class="token string" style="color:rgb(195, 232, 141)">    </span><span class="token string variable" style="color:rgb(191, 199, 213)">${APISERVER_NAME}</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;&gt;</span><span class="token plain"> /etc/hosts</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 替换为 master 节点上 kubeadm token create 命令的输出</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">kubeadm </span><span class="token function" style="color:rgb(130, 170, 255)">join</span><span class="token plain"> apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303</span></div></div></div></div></div><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="检查初始化结果"></a>检查初始化结果<a aria-hidden="true" tabindex="-1" class="hash-link" href="#检查初始化结果" title="Direct link to heading">#</a></h3><p>在 master 节点上执行</p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 只在 master 节点执行</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">kubectl get nodes -o wide</span></div></div></div></div></div><p>输出结果如下所示：</p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-undefined codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token plain">[root@demo-master-a-1 ~]# kubectl get nodes</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">NAME     STATUS   ROLES    AGE     VERSION</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">demo-master-a-1   Ready    master   5m3s    v1.19.x</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">demo-worker-a-1   Ready    &lt;none&gt;   2m26s   v1.19.x</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">demo-worker-a-2   Ready    &lt;none&gt;   3m56s   v1.19.x</span></div></div></div></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="安装ingress-controller"></a>安装Ingress Controller<a aria-hidden="true" tabindex="-1" class="hash-link" href="#安装ingress-controller" title="Direct link to heading">#</a></h2><div><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_1w39 tabs__item--active" style="outline:none">快速初始化</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39" style="outline:none">卸载IngressController</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39" style="outline:none">YAML文件</li></ul><div role="tabpanel" class="margin-vert--md"><div><p><strong>在 master 节点上执行</strong></p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><button tabindex="0" type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button><div class="prism-code language-bash codeBlock_3iAC"><div class="codeBlockLines_b7E3" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic"># 只在 master 节点执行</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">kubectl apply -f https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/nginx-ingress.yaml</span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block">
-</span></div></div></div></div></div></div></div></div><p><strong>配置域名解析</strong></p><p>将域名 *.demo.yourdomain.com 解析到 demo-worker-a-2 的 IP 地址 z.z.z.z （也可以是 demo-worker-a-1 的地址 y.y.y.y）</p><p><strong>验证配置</strong></p><p>在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面</p><div class="admonition admonition-caution alert alert--warning"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>WARRING</h5></div><div class="admonition-content"><p>如果您打算将 Kubernetes 用于生产环境，请参考此文档 <a href="https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/" target="_blank" rel="noopener noreferrer">Installing Ingress Controller</a>，完善 Ingress 的配置</p></div></div></div></article><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_3SO_"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#配置要求" class="table-of-contents__link">配置要求</a></li><li><a href="#检查-centos--hostname" class="table-of-contents__link">检查 centos / hostname</a></li><li><a href="#检查网络" class="table-of-contents__link">检查网络</a></li><li><a href="#安装docker及kubelet" class="table-of-contents__link">安装docker及kubelet</a></li><li><a href="#初始化master节点" class="table-of-contents__link">初始化master节点</a><ul><li><a href="#检查master初始化结果" class="table-of-contents__link">检查master初始化结果</a></li></ul></li><li><a href="#初始化work节点" class="table-of-contents__link">初始化work节点</a><ul><li><a href="#获得join命令参数" class="table-of-contents__link">获得join命令参数</a></li><li><a href="#初始化work" class="table-of-contents__link">初始化work</a></li><li><a href="#检查初始化结果" class="table-of-contents__link">检查初始化结果</a></li></ul></li><li><a href="#安装ingress-controller" class="table-of-contents__link">安装Ingress Controller</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="text--center"><div>Copyright © 2020 docgo.go2love.ml, Inc. Built with Docusaurus.</div></div></div></footer></div>
-<script src="/styles.6aa03fa5.js"></script>
-<script src="/runtime~main.d5992e9b.js"></script>
-<script src="/main.43d3db25.js"></script>
-<script src="/1.b1b5cc88.js"></script>
-<script src="/2.94e1053a.js"></script>
-<script src="/35.803afefc.js"></script>
-<script src="/36.f28cd485.js"></script>
-<script src="/935f2afb.83748b62.js"></script>
-<script src="/17896441.d7b5390d.js"></script>
-<script src="/ef58646b.9686dc5b.js"></script>
+<nav aria-label="Skip navigation links"><button type="button" tabindex="0" class="skipToContent_2AhQ">Skip to main content</button></nav><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a class="navbar__brand" href="/"><img src="/img/logo.svg" alt="My Site Logo" class="themedImage_2E_h themedImage--light_AouX navbar__logo"><img alt="My Site Logo" class="themedImage_2E_h themedImage--dark_1YPN navbar__logo"><strong class="navbar__title">笔乐小记</strong></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/kubernetes/installSingle">Kubernetes</a><a class="navbar__item navbar__link" href="/docs/linux/OSInstall">Linux</a></div><div class="navbar__items navbar__items--right"><div class="react-toggle react-toggle--disabled displayOnlyInLargeViewport_2aTZ"><div class="react-toggle-track"><div class="react-toggle-track-check"><span class="toggle_BsTx">🌜</span></div><div class="react-toggle-track-x"><span class="toggle_BsTx">🌞</span></div></div><div class="react-toggle-thumb"></div><input type="checkbox" disabled="" aria-label="Dark mode toggle" class="react-toggle-screenreader-only"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a class="navbar__brand" href="/"><img src="/img/logo.svg" alt="My Site Logo" class="themedImage_2E_h themedImage--light_AouX navbar__logo"><img alt="My Site Logo" class="themedImage_2E_h themedImage--dark_1YPN navbar__logo"><strong class="navbar__title">笔乐小记</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a aria-current="page" class="menu__link navbar__link--active" href="/docs/kubernetes/installSingle">Kubernetes</a></li><li class="menu__list-item"><a class="menu__link" href="/docs/linux/OSInstall">Linux</a></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_2gpo"><div class="docSidebarContainer_3_JD" role="complementary"><div class="sidebar_2urC"><div class="menu menu--responsive thin-scrollbar menu_5FrY"><button aria-label="Open Menu" aria-haspopup="true" class="button button--secondary button--sm menu__button" type="button"><svg aria-label="Menu" class="sidebarMenuIcon_Dm3K" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 32 32" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><ul class="menu__list"><li class="menu__list-item"><a class="menu__link menuLinkText_2zSB">安装Kuberbetes</a><ul class="menu__list"><li class="menu__list-item"><a aria-current="page" class="menu__link menu__link--active active" tabindex="0" href="/docs/kubernetes/installSingle">安装Kubernetes单Master节点</a></li></ul></li></ul></div></div></div><main class="docMainContainer_3EyW"><div class="container padding-vert--lg docItemWrapper_39qw"><div class="row"><div class="col docItemCol_2ASc"><div class="docItemContainer_3QWW"><article><header><h1 class="docTitle_1Lrw">安装Kubernetes单Master节点</h1></header><div class="markdown"><h2 id="配置要求">配置要求</h2><ul><li>至少2台 <strong>2核4G</strong> 的服务器</li><li><strong>CentOS 7.6/7.7/7.8</strong></li></ul><p><strong>安装后的软件版本为</strong></p><ul><li>Kubernetes v1.19.x<ul><li>calico 3.13.1</li><li>ginx-ingress 1.5.5</li></ul></li><li>Docker 19.03</li></ul><p>安装后的拓扑图如下：
+<img src="https://gitee.com/saakyous/gopic/raw/master/img/2020/11/20201114112629.png"></p><div class="admonition admonition-tip alert alert--success"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>关于二进制安装</h5></div><div class="admonition-content"><p>kubeadm 是 Kubernetes 官方支持的安装方式，“二进制” 不是。本文档采用 kubernetes.io 官方推荐的 kubeadm 工具安装 kubernetes 集群。</p></div></div><h2 id="检查-centos--hostname">检查 centos / hostname</h2><pre><code class="language-sh"># 在 master 节点和 worker 节点都要执行
+cat /etc/redhat-release
+
+# 此处 hostname 的输出将会是该机器在 Kubernetes 集群中的节点名字
+# 不能使用 localhost 作为节点的名字
+hostname
+
+# 请使用 lscpu 命令，核对 CPU 信息
+# Architecture: x86_64    本安装文档不支持 arm 架构
+# CPU(s):       2         CPU 内核数量不能低于 2
+lscpu
+</code></pre><div class="admonition admonition-note alert alert--secondary"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>修改 hostname</h5></div><div class="admonition-content"><p>如果您需要修改 hostname，可执行如下指令：</p><pre><code class="language-sh"># 修改 hostname
+hostnamectl set-hostname your-new-host-name
+# 查看修改结果
+hostnamectl status
+# 设置 hostname 解析
+echo &quot;127.0.0.1   $(hostname)&quot; &gt;&gt; /etc/hosts
+</code></pre></div></div><h2 id="检查网络">检查网络</h2><p>在所有节点执行命令</p><pre><code>[root@demo-master-a-1 ~]$ ip route show
+default via 172.21.0.1 dev eth0 
+169.254.0.0/16 dev eth0 scope link metric 1002 
+172.21.0.0/20 dev eth0 proto kernel scope link src 172.21.0.12 
+
+[root@demo-master-a-1 ~]$ ip address
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:16:3e:12:a4:1b brd ff:ff:ff:ff:ff:ff
+    inet 172.17.216.80/20 brd 172.17.223.255 scope global dynamic eth0
+       valid_lft 305741654sec preferred_lft 305741654sec
+
+</code></pre><div class="admonition admonition-note alert alert--secondary"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>kubelet使用的IP地址</h5></div><div class="admonition-content"><ul><li><em>ip route show</em> 命令中，可以知道机器的默认网卡，通常是 <em>eth0</em>，如 <em>default via 172.21.0.23 dev eth0</em></li><li><em>ip address</em> 命令中，可显示默认网卡的 IP 地址，Kubernetes 将使用此 IP 地址与集群内的其他节点通信，如 <em>172.17.216.80</em></li><li>所有节点上 Kubernetes 所使用的 IP 地址必须可以互通（无需 NAT 映射、无安全组或防火墙隔离）</li></ul></div></div><h2 id="安装docker及kubelet">安装docker及kubelet</h2><div class="admonition admonition-danger alert alert--danger"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>请认真核对如下7个选项</h5></div><div class="admonition-content"><ul><li>我的任意节点 centos 版本为 7.6 / 7.7 或 7.8</li><li>我的任意节点 CPU 内核数量大于等于 2，且内存大于等于 4G</li><li>我的任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</li><li>我的任意节点都有固定的内网 IP 地址</li><li>我的任意节点都只有一个网卡，如果有特殊目的，我可以在完成 K8S 安装后再增加新的网卡</li><li>我的任意节点上 Kubelet使用的 IP 地址 可互通（无需 NAT 映射即可相互访问），且没有防火墙、安全组隔离</li><li>我的任意节点不会直接使用 docker run 或 docker-compose 运行容器</li></ul></div></div><p>使用root身份在所有节点执行乳如下代码，以安装软件：</p><ul><li>docker</li><li>nfs-utils</li><li>kubectl/kubeadm/kubelet</li></ul><div><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_1w39 tabs__item--active">快速安装</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39">手动安装</li></ul><div class="margin-vert--md"><div role="tabpanel"><p><strong>请将脚本最后的 1.19.3 替换成您需要的版本号， 脚本中间的 v1.19.x 不要替换</strong></p><blockquote><p>docker hub 镜像请根据自己网络的情况任选一个</p><ul><li>第四行为腾讯云 docker hub 镜像</li><li>第六行为DaoCloud docker hub 镜像</li><li>第八行为华为云 docker hub 镜像</li><li>第十行为阿里云 docker hub 镜像</li></ul></blockquote><pre><code class="language-bash"># 在 master 节点和 worker 节点都要执行
+# 最后一个参数 1.19.3 用于指定 kubenetes 版本，支持所有 1.19.x 版本的安装
+# 腾讯云 docker hub 镜像
+# export REGISTRY_MIRROR=&quot;https://mirror.ccs.tencentyun.com&quot;
+# DaoCloud 镜像
+# export REGISTRY_MIRROR=&quot;http://f1361db2.m.daocloud.io&quot;
+# 华为云镜像
+# export REGISTRY_MIRROR=&quot;https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com&quot;
+# 阿里云 docker hub 镜像
+export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
+curl -sSL https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/install_kubelet.sh | sh -s 1.19.3
+
+</code></pre></div><div role="tabpanel" hidden=""><p><strong>手动执行以下代码，结果与快速安装相同。请将脚本的 ${1} 替换成您需要的版本号，例如 1.19.3</strong></p><blockquote><p>docker hub 镜像请根据自己网络的情况任选一个</p><ul><li>第四行为腾讯云 docker hub 镜像</li><li>第六行为DaoCloud docker hub 镜像</li><li>第八行为华为云 docker hub 镜像</li></ul></blockquote><pre><code class="language-bash"># 在 master 节点和 worker 节点都要执行
+# 最后一个参数 1.19.3 用于指定 kubenetes 版本，支持所有 1.19.x 版本的安装
+# 腾讯云 docker hub 镜像
+# export REGISTRY_MIRROR=&quot;https://mirror.ccs.tencentyun.com&quot;
+# DaoCloud 镜像
+# export REGISTRY_MIRROR=&quot;http://f1361db2.m.daocloud.io&quot;
+# 阿里云 docker hub 镜像
+export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
+
+</code></pre><pre><code class="language-bash">#!/bin/bash
+
+# 在 master 节点和 worker 节点都要执行
+
+# 安装 docker
+# 参考文档如下
+# https://docs.docker.com/install/linux/docker-ce/centos/ 
+# https://docs.docker.com/install/linux/linux-postinstall/
+
+# 卸载旧版本
+yum remove -y docker \
+docker-client \
+docker-client-latest \
+docker-ce-cli \
+docker-common \
+docker-latest \
+docker-latest-logrotate \
+docker-logrotate \
+docker-selinux \
+docker-engine-selinux \
+docker-engine
+
+# 设置 yum repository
+yum install -y yum-utils \
+device-mapper-persistent-data \
+lvm2
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+# 安装并启动 docker
+yum install -y docker-ce-19.03.11 docker-ce-cli-19.03.11 containerd.io-1.2.13
+
+mkdir /etc/docker || true
+
+cat &gt; /etc/docker/daemon.json &lt;&lt;EOF
+{
+  &quot;registry-mirrors&quot;: [&quot;${REGISTRY_MIRROR}&quot;],
+  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],
+  &quot;log-driver&quot;: &quot;json-file&quot;,
+  &quot;log-opts&quot;: {
+    &quot;max-size&quot;: &quot;100m&quot;
+  },
+  &quot;storage-driver&quot;: &quot;overlay2&quot;,
+  &quot;storage-opts&quot;: [
+    &quot;overlay2.override_kernel_check=true&quot;
+  ]
+}
+EOF
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+# Restart Docker
+systemctl daemon-reload
+systemctl enable docker
+systemctl restart docker
+
+# 安装 nfs-utils
+# 必须先安装 nfs-utils 才能挂载 nfs 网络存储
+yum install -y nfs-utils
+yum install -y wget
+
+# 关闭 防火墙
+systemctl stop firewalld
+systemctl disable firewalld
+
+# 关闭 SeLinux
+setenforce 0
+sed -i &quot;s/SELINUX=enforcing/SELINUX=disabled/g&quot; /etc/selinux/config
+
+# 关闭 swap
+swapoff -a
+yes | cp /etc/fstab /etc/fstab_bak
+cat /etc/fstab_bak |grep -v swap &gt; /etc/fstab
+
+# 修改 /etc/sysctl.conf
+# 如果有配置，则修改
+sed -i &quot;s#^net.ipv4.ip_forward.*#net.ipv4.ip_forward=1#g&quot;  /etc/sysctl.conf
+sed -i &quot;s#^net.bridge.bridge-nf-call-ip6tables.*#net.bridge.bridge-nf-call-ip6tables=1#g&quot;  /etc/sysctl.conf
+sed -i &quot;s#^net.bridge.bridge-nf-call-iptables.*#net.bridge.bridge-nf-call-iptables=1#g&quot;  /etc/sysctl.conf
+sed -i &quot;s#^net.ipv6.conf.all.disable_ipv6.*#net.ipv6.conf.all.disable_ipv6=1#g&quot;  /etc/sysctl.conf
+sed -i &quot;s#^net.ipv6.conf.default.disable_ipv6.*#net.ipv6.conf.default.disable_ipv6=1#g&quot;  /etc/sysctl.conf
+sed -i &quot;s#^net.ipv6.conf.lo.disable_ipv6.*#net.ipv6.conf.lo.disable_ipv6=1#g&quot;  /etc/sysctl.conf
+sed -i &quot;s#^net.ipv6.conf.all.forwarding.*#net.ipv6.conf.all.forwarding=1#g&quot;  /etc/sysctl.conf
+# 可能没有，追加
+echo &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt; /etc/sysctl.conf
+echo &quot;net.bridge.bridge-nf-call-ip6tables = 1&quot; &gt;&gt; /etc/sysctl.conf
+echo &quot;net.bridge.bridge-nf-call-iptables = 1&quot; &gt;&gt; /etc/sysctl.conf
+echo &quot;net.ipv6.conf.all.disable_ipv6 = 1&quot; &gt;&gt; /etc/sysctl.conf
+echo &quot;net.ipv6.conf.default.disable_ipv6 = 1&quot; &gt;&gt; /etc/sysctl.conf
+echo &quot;net.ipv6.conf.lo.disable_ipv6 = 1&quot; &gt;&gt; /etc/sysctl.conf
+echo &quot;net.ipv6.conf.all.forwarding = 1&quot;  &gt;&gt; /etc/sysctl.conf
+# 执行命令以应用
+sysctl -p
+
+# 配置K8S的yum源
+cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+       http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF
+
+# 卸载旧版本
+yum remove -y kubelet kubeadm kubectl
+
+# 安装kubelet、kubeadm、kubectl
+# 将 ${1} 替换为 kubernetes 版本号，例如 1.19.0
+yum install -y kubelet-${1} kubeadm-${1} kubectl-${1}
+
+# 重启 docker，并启动 kubelet
+systemctl daemon-reload
+systemctl restart docker
+systemctl enable kubelet &amp;&amp; systemctl start kubelet
+
+docker version
+
+</code></pre><div class="admonition admonition-caution alert alert--warning"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>WARNING</h5></div><div class="admonition-content"><p>如果此时执行 <em>systemctl status kubelet</em> 命令，将得到 kubelet 启动失败的错误提示，请忽略此错误，因为必须完成后续步骤中 kubeadm init 的操作，kubelet 才能正常启动</p></div></div></div></div></div><h2 id="初始化master节点">初始化master节点</h2><div class="admonition admonition-danger alert alert--danger"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>关于初始化时用到的环境变量</h5></div><div class="admonition-content"><ul><li><strong>APISERVER_NAME</strong> 不能是 master 的 hostname</li><li><strong>APISERVER_NAME</strong> 必须全为小写字母、数字、小数点，不能包含减号</li><li><strong>POD_SUBNET</strong> 所使用的网段不能与 <strong>master节点/worker节点</strong> 所在的网段重叠。该字段的取值为一个 CIDR 值，如果您对 CIDR 这个概念还不熟悉，请仍然执行 export POD_SUBNET=10.100.0.1/16 命令，不做修改</li></ul></div></div><div><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_1w39 tabs__item--active">快速初始化</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39">手动初始化</li></ul><div class="margin-vert--md"><div role="tabpanel">请将脚本最后的 1.19.3 替换成您需要的版本号， __脚本中间的 v1.19.x 不要替换__<pre><code class="language-bash"># 只在 master 节点执行
+# 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
+# export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
+export MASTER_IP=x.x.x.x
+# 替换 apiserver.demo 为 您想要的 dnsName
+export APISERVER_NAME=apiserver.demo
+# Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
+export POD_SUBNET=10.100.0.1/16
+echo &quot;${MASTER_IP}    ${APISERVER_NAME}&quot; &gt;&gt; /etc/hosts
+curl -sSL https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/init_master.sh | sh -s 1.19.3
+</code></pre></div><div role="tabpanel" hidden="">手动执行以下代码，结果与快速初始化相同。__请将脚本$1 替换成您需要的版本号，例如 1.19.3__<pre><code class="language-bash"># 只在 master 节点执行
+# 替换 x.x.x.x 为 master 节点的内网IP
+# export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
+export MASTER_IP=x.x.x.x
+# 替换 apiserver.demo 为 您想要的 dnsName
+export APISERVER_NAME=apiserver.demo
+# Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
+export POD_SUBNET=10.100.0.1/16
+echo &quot;${MASTER_IP}    ${APISERVER_NAME}&quot; &gt;&gt; /etc/hosts
+</code></pre><pre><code class="language-bash">#!/bin/bash
+
+# 只在 master 节点执行
+
+# 脚本出错时终止执行
+set -e
+
+if [ ${#POD_SUBNET} -eq 0 ] || [ ${#APISERVER_NAME} -eq 0 ]; then
+  echo -e &quot;\033[31;1m请确保您已经设置了环境变量 POD_SUBNET 和 APISERVER_NAME \033[0m&quot;
+  echo 当前POD_SUBNET=$POD_SUBNET
+  echo 当前APISERVER_NAME=$APISERVER_NAME
+  exit 1
+fi
+
+
+# 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2
+rm -f ./kubeadm-config.yaml
+cat &lt;&lt;EOF &gt; ./kubeadm-config.yaml
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: v${1}
+imageRepository: registry.aliyuncs.com/k8sxio
+controlPlaneEndpoint: &quot;${APISERVER_NAME}:6443&quot;
+networking:
+  serviceSubnet: &quot;10.96.0.0/16&quot;
+  podSubnet: &quot;${POD_SUBNET}&quot;
+  dnsDomain: &quot;cluster.local&quot;
+EOF
+
+# kubeadm init
+# 根据您服务器网速的情况，您需要等候 3 - 10 分钟
+kubeadm init --config=kubeadm-config.yaml --upload-certs
+
+# 配置 kubectl
+rm -rf /root/.kube/
+mkdir /root/.kube/
+cp -i /etc/kubernetes/admin.conf /root/.kube/config
+
+# 安装 calico 网络插件
+# 参考文档 https://docs.projectcalico.org/v3.13/getting-started/kubernetes/self-managed-onprem/onpremises
+echo &quot;安装calico-3.13.1&quot;
+rm -f calico-3.13.1.yaml
+wget https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/calico-3.13.1.yaml
+kubectl apply -f calico-3.13.1.yaml
+</code></pre></div></div></div><h3 id="检查master初始化结果">检查master初始化结果</h3><pre><code class="language-bash"># 只在 master 节点执行
+
+# 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
+watch kubectl get pod -n kube-system -o wide
+
+# 查看 master 节点初始化结果
+kubectl get nodes -o wide
+</code></pre><h2 id="初始化work节点">初始化work节点</h2><h3 id="获得join命令参数">获得join命令参数</h3><p><strong>在master节点上执行</strong></p><pre><code class="language-bash"># 只在 master 节点执行
+kubeadm token create --print-join-command
+</code></pre><p>可获取kubeadm join 命令及参数，如下所示</p><pre><code class="language-bash"># kubeadm token create 命令的输出
+kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
+</code></pre><div class="admonition admonition-tip alert alert--success"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>有效时间</h5></div><div class="admonition-content"><p>该 token 的有效时间为 2 个小时，2小时内，您可以使用此 token 初始化任意数量的 worker 节点。</p></div></div><h3 id="初始化work">初始化work</h3><p><strong>针对所有的 worker 节点执行</strong></p><pre><code class="language-bash"># 只在 worker 节点执行
+# 替换 x.x.x.x 为 master 节点的内网 IP
+export MASTER_IP=x.x.x.x
+# 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME
+export APISERVER_NAME=apiserver.demo
+echo &quot;${MASTER_IP}    ${APISERVER_NAME}&quot; &gt;&gt; /etc/hosts
+
+# 替换为 master 节点上 kubeadm token create 命令的输出
+kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
+</code></pre><h3 id="检查初始化结果">检查初始化结果</h3><p>在 master 节点上执行</p><pre><code class="language-bash"># 只在 master 节点执行
+kubectl get nodes -o wide
+</code></pre><p>输出结果如下所示：</p><pre><code>[root@demo-master-a-1 ~]# kubectl get nodes
+NAME     STATUS   ROLES    AGE     VERSION
+demo-master-a-1   Ready    master   5m3s    v1.19.x
+demo-worker-a-1   Ready    &lt;none&gt;   2m26s   v1.19.x
+demo-worker-a-2   Ready    &lt;none&gt;   3m56s   v1.19.x
+</code></pre><h2 id="安装ingress-controller">安装Ingress Controller</h2><div><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_1w39 tabs__item--active">快速初始化</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39">卸载IngressController</li><li role="tab" tabindex="0" aria-selected="false" class="tabs__item tabItem_1w39">YAML文件</li></ul><div class="margin-vert--md"><div role="tabpanel"><p><strong>在 master 节点上执行</strong></p><pre><code class="language-bash"># 只在 master 节点执行
+kubectl apply -f https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/nginx-ingress.yaml
+
+</code></pre></div><div role="tabpanel" hidden=""><p><strong>在 master 节点上执行</strong>
+只在您想选择其他 Ingress Controller 的情况下卸载</p><pre><code class="language-bash"># 只在 master 节点执行
+kubectl delete -f https://gitee.com/saakyous/gopic/raw/master/scrips/kubernetes/nginx-ingress.yaml
+</code></pre></div><div role="tabpanel" hidden=""><pre><code class="language-yaml"># 如果打算用于生产环境，请参考 https://github.com/nginxinc/kubernetes-ingress/blob/v1.5.5/docs/installation.md 并根据您自己的情况做进一步定制
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-ingress
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nginx-ingress 
+  namespace: nginx-ingress
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: default-server-secret
+  namespace: nginx-ingress
+type: Opaque
+data:
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN2akNDQWFZQ0NRREFPRjl0THNhWFhEQU5CZ2txaGtpRzl3MEJBUXNGQURBaE1SOHdIUVlEVlFRRERCWk8KUjBsT1dFbHVaM0psYzNORGIyNTBjbTlzYkdWeU1CNFhEVEU0TURreE1qRTRNRE16TlZvWERUSXpNRGt4TVRFNApNRE16TlZvd0lURWZNQjBHQTFVRUF3d1dUa2RKVGxoSmJtZHlaWE56UTI5dWRISnZiR3hsY2pDQ0FTSXdEUVlKCktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUwvN2hIUEtFWGRMdjNyaUM3QlBrMTNpWkt5eTlyQ08KR2xZUXYyK2EzUDF0azIrS3YwVGF5aGRCbDRrcnNUcTZzZm8vWUk1Y2Vhbkw4WGM3U1pyQkVRYm9EN2REbWs1Qgo4eDZLS2xHWU5IWlg0Rm5UZ0VPaStlM2ptTFFxRlBSY1kzVnNPazFFeUZBL0JnWlJVbkNHZUtGeERSN0tQdGhyCmtqSXVuektURXUyaDU4Tlp0S21ScUJHdDEwcTNRYzhZT3ExM2FnbmovUWRjc0ZYYTJnMjB1K1lYZDdoZ3krZksKWk4vVUkxQUQ0YzZyM1lma1ZWUmVHd1lxQVp1WXN2V0RKbW1GNWRwdEMzN011cDBPRUxVTExSakZJOTZXNXIwSAo1TmdPc25NWFJNV1hYVlpiNWRxT3R0SmRtS3FhZ25TZ1JQQVpQN2MwQjFQU2FqYzZjNGZRVXpNQ0F3RUFBVEFOCkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQWpLb2tRdGRPcEsrTzhibWVPc3lySmdJSXJycVFVY2ZOUitjb0hZVUoKdGhrYnhITFMzR3VBTWI5dm15VExPY2xxeC9aYzJPblEwMEJCLzlTb0swcitFZ1U2UlVrRWtWcitTTFA3NTdUWgozZWI4dmdPdEduMS9ienM3bzNBaS9kclkrcUI5Q2k1S3lPc3FHTG1US2xFaUtOYkcyR1ZyTWxjS0ZYQU80YTY3Cklnc1hzYktNbTQwV1U3cG9mcGltU1ZmaXFSdkV5YmN3N0NYODF6cFErUyt1eHRYK2VBZ3V0NHh3VlI5d2IyVXYKelhuZk9HbWhWNThDd1dIQnNKa0kxNXhaa2VUWXdSN0diaEFMSkZUUkk3dkhvQXprTWIzbjAxQjQyWjNrN3RXNQpJUDFmTlpIOFUvOWxiUHNoT21FRFZkdjF5ZytVRVJxbStGSis2R0oxeFJGcGZnPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBdi91RWM4b1JkMHUvZXVJTHNFK1RYZUprckxMMnNJNGFWaEMvYjVyYy9XMlRiNHEvClJOcktGMEdYaVN1eE9ycXgrajlnamx4NXFjdnhkenRKbXNFUkJ1Z1B0ME9hVGtIekhvb3FVWmcwZGxmZ1dkT0EKUTZMNTdlT1l0Q29VOUZ4amRXdzZUVVRJVUQ4R0JsRlNjSVo0b1hFTkhzbysyR3VTTWk2Zk1wTVM3YUhudzFtMApxWkdvRWEzWFNyZEJ6eGc2clhkcUNlUDlCMXl3VmRyYURiUzc1aGQzdUdETDU4cGszOVFqVUFQaHpxdmRoK1JWClZGNGJCaW9CbTVpeTlZTW1hWVhsMm0wTGZzeTZuUTRRdFFzdEdNVWozcGJtdlFmazJBNnljeGRFeFpkZFZsdmwKMm82MjBsMllxcHFDZEtCRThCay90elFIVTlKcU56cHpoOUJUTXdJREFRQUJBb0lCQVFDZklHbXowOHhRVmorNwpLZnZJUXQwQ0YzR2MxNld6eDhVNml4MHg4Mm15d1kxUUNlL3BzWE9LZlRxT1h1SENyUlp5TnUvZ2IvUUQ4bUFOCmxOMjRZTWl0TWRJODg5TEZoTkp3QU5OODJDeTczckM5bzVvUDlkazAvYzRIbjAzSkVYNzZ5QjgzQm9rR1FvYksKMjhMNk0rdHUzUmFqNjd6Vmc2d2szaEhrU0pXSzBwV1YrSjdrUkRWYmhDYUZhNk5nMUZNRWxhTlozVDhhUUtyQgpDUDNDeEFTdjYxWTk5TEI4KzNXWVFIK3NYaTVGM01pYVNBZ1BkQUk3WEh1dXFET1lvMU5PL0JoSGt1aVg2QnRtCnorNTZud2pZMy8yUytSRmNBc3JMTnIwMDJZZi9oY0IraVlDNzVWYmcydVd6WTY3TWdOTGQ5VW9RU3BDRkYrVm4KM0cyUnhybnhBb0dCQU40U3M0ZVlPU2huMVpQQjdhTUZsY0k2RHR2S2ErTGZTTXFyY2pOZjJlSEpZNnhubmxKdgpGenpGL2RiVWVTbWxSekR0WkdlcXZXaHFISy9iTjIyeWJhOU1WMDlRQ0JFTk5jNmtWajJTVHpUWkJVbEx4QzYrCk93Z0wyZHhKendWelU0VC84ajdHalRUN05BZVpFS2FvRHFyRG5BYWkyaW5oZU1JVWZHRXFGKzJyQW9HQkFOMVAKK0tZL0lsS3RWRzRKSklQNzBjUis3RmpyeXJpY05iWCtQVzUvOXFHaWxnY2grZ3l4b25BWlBpd2NpeDN3QVpGdwpaZC96ZFB2aTBkWEppc1BSZjRMazg5b2pCUmpiRmRmc2l5UmJYbyt3TFU4NUhRU2NGMnN5aUFPaTVBRHdVU0FkCm45YWFweUNweEFkREtERHdObit3ZFhtaTZ0OHRpSFRkK3RoVDhkaVpBb0dCQUt6Wis1bG9OOTBtYlF4VVh5YUwKMjFSUm9tMGJjcndsTmVCaWNFSmlzaEhYa2xpSVVxZ3hSZklNM2hhUVRUcklKZENFaHFsV01aV0xPb2I2NTNyZgo3aFlMSXM1ZUtka3o0aFRVdnpldm9TMHVXcm9CV2xOVHlGanIrSWhKZnZUc0hpOGdsU3FkbXgySkJhZUFVWUNXCndNdlQ4NmNLclNyNkQrZG8wS05FZzFsL0FvR0FlMkFVdHVFbFNqLzBmRzgrV3hHc1RFV1JqclRNUzRSUjhRWXQKeXdjdFA4aDZxTGxKUTRCWGxQU05rMXZLTmtOUkxIb2pZT2pCQTViYjhibXNVU1BlV09NNENoaFJ4QnlHbmR2eAphYkJDRkFwY0IvbEg4d1R0alVZYlN5T294ZGt5OEp0ek90ajJhS0FiZHd6NlArWDZDODhjZmxYVFo5MWpYL3RMCjF3TmRKS2tDZ1lCbyt0UzB5TzJ2SWFmK2UwSkN5TGhzVDQ5cTN3Zis2QWVqWGx2WDJ1VnRYejN5QTZnbXo5aCsKcDNlK2JMRUxwb3B0WFhNdUFRR0xhUkcrYlNNcjR5dERYbE5ZSndUeThXczNKY3dlSTdqZVp2b0ZpbmNvVlVIMwphdmxoTUVCRGYxSjltSDB5cDBwWUNaS2ROdHNvZEZtQktzVEtQMjJhTmtsVVhCS3gyZzR6cFE9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-config
+  namespace: nginx-ingress
+data:
+  server-names-hash-bucket-size: &quot;1024&quot;
+
+
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: nginx-ingress
+rules:
+- apiGroups:
+  - &quot;&quot;
+  resources:
+  - services
+  - endpoints
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - &quot;&quot;
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - &quot;&quot;
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - create
+- apiGroups:
+  - &quot;&quot;
+  resources:
+  - pods
+  verbs:
+  - list
+- apiGroups:
+  - &quot;&quot;
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs:
+  - list
+  - watch
+  - get
+- apiGroups:
+  - &quot;extensions&quot;
+  resources:
+  - ingresses/status
+  verbs:
+  - update
+- apiGroups:
+  - k8s.nginx.org
+  resources:
+  - virtualservers
+  - virtualserverroutes
+  verbs:
+  - list
+  - watch
+  - get
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: nginx-ingress
+subjects:
+- kind: ServiceAccount
+  name: nginx-ingress
+  namespace: nginx-ingress
+roleRef:
+  kind: ClusterRole
+  name: nginx-ingress
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-ingress
+  namespace: nginx-ingress
+  annotations:
+    prometheus.io/scrape: &quot;true&quot;
+    prometheus.io/port: &quot;9113&quot;
+spec:
+  selector:
+    matchLabels:
+      app: nginx-ingress
+  template:
+    metadata:
+      labels:
+        app: nginx-ingress
+    spec:
+      serviceAccountName: nginx-ingress
+      containers:
+      - image: nginx/nginx-ingress:1.5.5
+        name: nginx-ingress
+        ports:
+        - name: http
+          containerPort: 80
+          hostPort: 80
+        - name: https
+          containerPort: 443
+          hostPort: 443
+        - name: prometheus
+          containerPort: 9113
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        args:
+          - -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
+          - -default-server-tls-secret=$(POD_NAMESPACE)/default-server-secret
+         #- -v=3 # Enables extensive logging. Useful for troubleshooting.
+         #- -report-ingress-status
+         #- -external-service=nginx-ingress
+         #- -enable-leader-election
+          - -enable-prometheus-metrics
+         #- -enable-custom-resources
+</code></pre></div></div></div><p><strong>配置域名解析</strong></p><p>将域名 *.demo.yourdomain.com 解析到 demo-worker-a-2 的 IP 地址 z.z.z.z （也可以是 demo-worker-a-1 的地址 y.y.y.y）</p><p><strong>验证配置</strong></p><p>在浏览器访问 a.demo.yourdomain.com，将得到 404 NotFound 错误页面</p><div class="admonition admonition-caution alert alert--warning"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>WARRING</h5></div><div class="admonition-content"><p>如果您打算将 Kubernetes 用于生产环境，请参考此文档 <a href="https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/">Installing Ingress Controller</a>，完善 Ingress 的配置</p></div></div></div></article><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_3SO_ thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#配置要求" class="table-of-contents__link">配置要求</a></li><li><a href="#检查-centos--hostname" class="table-of-contents__link">检查 centos / hostname</a></li><li><a href="#检查网络" class="table-of-contents__link">检查网络</a></li><li><a href="#安装docker及kubelet" class="table-of-contents__link">安装docker及kubelet</a></li><li><a href="#初始化master节点" class="table-of-contents__link">初始化master节点</a><ul><li><a href="#检查master初始化结果" class="table-of-contents__link">检查master初始化结果</a></li></ul></li><li><a href="#初始化work节点" class="table-of-contents__link">初始化work节点</a><ul><li><a href="#获得join命令参数" class="table-of-contents__link">获得join命令参数</a></li><li><a href="#初始化work" class="table-of-contents__link">初始化work</a></li><li><a href="#检查初始化结果" class="table-of-contents__link">检查初始化结果</a></li></ul></li><li><a href="#安装ingress-controller" class="table-of-contents__link">安装Ingress Controller</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="text--center"><div>Copyright © 2020 docgo.go2love.ml, Inc. Built with Docusaurus.</div></div></div></footer></div>
+<script src="/styles.ceab8306.js"></script>
+<script src="/runtime~main.9e0a2fdc.js"></script>
+<script src="/main.f17300c2.js"></script>
+<script src="/1.68b3ccd5.js"></script>
+<script src="/34.a9643da0.js"></script>
+<script src="/35.6cbe4da2.js"></script>
+<script src="/935f2afb.c8ae1ee1.js"></script>
+<script src="/33.bc4d3d55.js"></script>
+<script src="/ef58646b.a4d85799.js"></script>
 </body>
 </html>
