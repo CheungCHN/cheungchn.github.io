@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="SeaSunny Blog RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="SeaSunny Blog Atom Feed"><title data-react-helmet="true">调度相关 | SeaSunny</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_version" content="current"><meta data-react-helmet="true" name="docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="调度相关 | SeaSunny"><meta data-react-helmet="true" name="description" content="集群中能够满足某一个 Pod 的资源需求的节点，我们称其为 可选节点（feasible node）。如果某一个 Pod 没有合适的 可选节点，则该 Pod 将一直停留在 Pending 状态，直到集群中出现了对于该 Pod 来说合适的 可选节点。"><meta data-react-helmet="true" property="og:description" content="集群中能够满足某一个 Pod 的资源需求的节点，我们称其为 可选节点（feasible node）。如果某一个 Pod 没有合适的 可选节点，则该 Pod 将一直停留在 Pending 状态，直到集群中出现了对于该 Pod 来说合适的 可选节点。"><meta data-react-helmet="true" property="og:url" content="https://cheungchn.github.io/docs/kubernetes/scheduler"><link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.ico"><link data-react-helmet="true" rel="canonical" href="https://cheungchn.github.io/docs/kubernetes/scheduler"><link rel="stylesheet" href="/styles.db62a8a8.css">
 <link rel="preload" href="/styles.4969db88.js" as="script">
-<link rel="preload" href="/runtime~main.12a1e21a.js" as="script">
+<link rel="preload" href="/runtime~main.73b96f04.js" as="script">
 <link rel="preload" href="/main.23ad20ac.js" as="script">
 <link rel="preload" href="/1.a34d610a.js" as="script">
 <link rel="preload" href="/42.60d7d8a4.js" as="script">
@@ -25,7 +25,7 @@
 5.在为 可选节点 评分时，需要考虑的因素有：</p><p>单个 Pod 和所有 Pod 的资源需求</p><ul><li>硬件、软件、策略（Policy，例如Limit Range、Resource Quota等）</li><li>亲和与反亲和（affinity and anti-affinity）</li><li>数据存储的位置</li><li>工作负载之间的相互影响</li><li>其他</li></ul><p>--ingress相关
 例如，一个典型的重定向注解：nginx.ingress.kubernetes.io/rewrite-target: /会将/path路径重定向到后端服务能够识别的/ 路径上面。</p></div></article><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_2xL- thin-scrollbar"></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2021 HiCodeSilo, Inc. 联系我：hicodesilo@hotmail.com</div></div></div></footer></div>
 <script src="/styles.4969db88.js"></script>
-<script src="/runtime~main.12a1e21a.js"></script>
+<script src="/runtime~main.73b96f04.js"></script>
 <script src="/main.23ad20ac.js"></script>
 <script src="/1.a34d610a.js"></script>
 <script src="/42.60d7d8a4.js"></script>
